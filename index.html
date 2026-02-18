@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyeux Anniversaire Omolara ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+:root {
+  --dark: #00001c;
+  --dark2: #111118;
+  --dark3: #1a1a24;
+  --gold: #c9a84c;
+  --gold2: #e8c96d;
+  --gold-light: #f5dfa0;
+  --cream: #f8f4ee;
+  --cream2: #f0ead8;
+  --text-dark: #1a1a24;
+  --text-light: #f8f4ee;
+  --text-muted: #9a8e7a;
+  --radius: 20px;
+  --radius-lg: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  /* cursor: none; */
+}
+
+/* Custom cursor */
+/* .cursor {
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease;
+  mix-blend-mode: multiply;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+body:hover .cursor { transform: scale(1); } */
+
+/* Music player */
+.music-player {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background: var(--dark);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.music-player:hover { border-color: var(--gold); transform: translateY(-2px); }
+.music-icon {
+  width: 36px; height: 36px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  font-size: 14px;
+}
+.music-icon.playing { animation: musicPulse 1.2s ease-in-out infinite; }
+@keyframes musicPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(201,168,76,0); }
+}
+.music-label { color: var(--text-light); font-size: 13px; font-weight: 500; letter-spacing: 0.5px; }
+.music-bars { display: flex; gap: 3px; align-items: flex-end; height: 18px; }
+.music-bars span {
+  width: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  animation: none;
+}
+.music-player.playing .music-bars span:nth-child(1) { animation: bar1 0.8s ease-in-out infinite; }
+.music-player.playing .music-bars span:nth-child(2) { animation: bar2 0.6s ease-in-out infinite 0.2s; }
+.music-player.playing .music-bars span:nth-child(3) { animation: bar3 0.9s ease-in-out infinite 0.1s; }
+.music-player.playing .music-bars span:nth-child(4) { animation: bar4 0.7s ease-in-out infinite 0.3s; }
+@keyframes bar1 { 0%,100%{height:6px} 50%{height:18px} }
+@keyframes bar2 { 0%,100%{height:12px} 50%{height:8px} }
+@keyframes bar3 { 0%,100%{height:8px} 50%{height:16px} }
+@keyframes bar4 { 0%,100%{height:14px} 50%{height:6px} }
+.music-bars span { height: 8px; }
+
+/* ======================== HERO ======================== */
+.hero {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 40px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('./assets/img/bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+/* .hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+} */
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)}
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 900;
+  color: var(--text-light);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--gold);
+  display: block;
+  font-style: italic;
+}
+.hero-subtitle {
+  font-size: 17px;
+  color: rgba(248,244,238,0.6);
+  line-height: 1.8;
+  margin-bottom: 44px;
+  max-width: 440px;
+  font-weight: 300;
+}
+.hero-subtitle strong { color: var(--gold-light); font-weight: 500; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 18px 36px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold2), var(--gold));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 20px 40px rgba(201,168,76,0.4); }
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary span, .btn-primary i { position: relative; z-index: 1; }
+
+.hero-image-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.hero-image-frame {
+  width: 420px;
+  height: 520px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(201,168,76,0.2);
+}
+.hero-image-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.hero-image-frame:hover img { transform: scale(1.04); }
+.hero-image-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,15,0.6) 0%, transparent 50%);
+  z-index: 1;
+}
+.hero-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 18px 24px;
+  border-radius: var(--radius);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 12px 32px rgba(201,168,76,0.4);
+  z-index: 2;
+}
+.hero-badge small { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 400; opacity: 0.7; margin-bottom: 2px; letter-spacing: 1px; text-transform: uppercase; }
+.hero-dot {
+  position: absolute;
+  top: 30px;
+  right: -15px;
+  width: 90px; height: 90px;
+  border: 2px dashed rgba(201,168,76,0.3);
+  border-radius: 50%;
+  animation: rotate 12s linear infinite;
+}
+@keyframes rotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.hero-dot::after {
+  content: '★';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 16px;
+}
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 50px;
+}
+.stat-item { text-align: center; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--gold); font-weight: 700; }
+.stat-label { font-size: 12px; color: rgba(248,244,238,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+/* ======================== SECTIONS COMMON ======================== */
+.section { padding: 120px 40px; }
+.section-dark { background: var(--dark2); }
+.section-darker { background: var(--dark); }
+.section-light { background: var(--cream); }
+.section-cream { background: var(--cream2); }
+
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.section-title.light { color: var(--text-light); }
+.section-title.dark { color: var(--text-dark); }
+.section-subtitle { font-size: 17px; color: var(--text-muted); line-height: 1.8; max-width: 560px; }
+.section-subtitle.light { color: rgba(248,244,238,0.55); }
+
+/* ======================== ABOUT ======================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-image-wrap { position: relative; }
+.about-image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+.about-image img { width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease; }
+.about-image:hover img { transform: scale(1.05); }
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.2) 0%, transparent 60%);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+.about-float {
+  position: absolute;
+  top: 30px;
+  right: -30px;
+  background: var(--dark);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  min-width: 160px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.about-float .float-icon {
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.about-float .float-text {
+  font-size: 13px;
+  color: rgba(248,244,238,0.8);
+  font-weight: 500;
+}
+.about-float .float-sub {
+  font-size: 11px;
+  color: rgba(248,244,238,0.4);
+  margin-top: 2px;
+}
+.about-qualities {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+.quality-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--cream2);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  border: 1px solid rgba(201,168,76,0.1);
+  transition: all 0.3s ease;
+}
+.quality-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateX(6px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.08);
+}
+.quality-icon {
+  width: 44px; height: 44px;
+  background: var(--dark);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.quality-text h4 { font-weight: 600; font-size: 15px; margin-bottom: 4px; color: var(--text-dark); }
+.quality-text p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* ======================== COUNTDOWN ======================== */
+.countdown-wrap {
+  background: rgba(3, 0, 25, 0.721);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: var(--radius-lg);
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.countdown-wrap::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+}
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+.countdown-block {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--radius);
+  padding: 32px 40px;
+  min-width: 140px;
+  position: relative;
+  overflow: hidden;
+}
+.countdown-block::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.countdown-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  color: var(--gold);
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+}
+.countdown-label {
+  display: block;
+  font-size: 12px;
+  color: rgba(248,244,238,0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.countdown-sep {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  color: rgba(201,168,76,0.3);
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  margin-top: -10px;
+}
+
+/* ======================== GALLERY ======================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+.gallery-item {
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
+.gallery-item:nth-child(4) { grid-column: span 2; aspect-ratio: 16/9; }
+.gallery-item img { width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease; }
+.gallery-item:not(.gallery-item:nth-child(1)):not(.gallery-item:nth-child(4)) { aspect-ratio: 1; }
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-overlay span { color: white; font-size: 14px; font-weight: 500; }
+
+/* ======================== WISHES ======================== */
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 50px;
+}
+.wish-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 28px;
+  border: 1px solid rgba(201,168,76,0.1);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  position: relative;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease forwards;
+}
+.wish-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(201,168,76,0.15);
+  border-color: rgba(201,168,76,0.3);
+}
+.wish-card::before {
+  content: '"';
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  color: var(--gold);
+  opacity: 0.15;
+  line-height: 1;
+}
+.wish-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.wish-avatar {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.wish-name { font-weight: 600; font-size: 14px; }
+.wish-role { font-size: 12px; color: var(--text-muted); }
+.wish-message { font-size: 14px; color: #555; line-height: 1.7; font-style: italic; }
+.wish-date { font-size: 11px; color: var(--text-muted); margin-top: 12px; }
+
+.wish-form {
+  background: var(--dark);
+  border-radius: var(--radius-lg);
+  padding: 50px;
+  border: 1px solid rgba(201,168,76,0.15);
+}
+.wish-form h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--text-light);
+  margin-bottom: 30px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.form-group label { font-size: 13px; color: rgba(248,244,238,0.6); font-weight: 500; letter-spacing: 0.5px; }
+.form-group input, .form-group textarea, .form-group select {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--text-light);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  outline: none;
+  resize: none;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.05);
+}
+.form-group textarea { min-height: 120px; }
+.btn-submit {
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  border-radius: 50px;
+  padding: 16px 40px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,168,76,0.4); }
+
+/* ======================== QUIZ ======================== */
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+   
+}
+.quiz-progress-bar {
+  background: rgba(201,168,76,0.15);
+  border-radius: 50px;
+  height: 4px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  border-radius: 50px;
+  transition: width 0.5s ease;
+}
+.quiz-question-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--text-light);
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+.quiz-counter {
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.quiz-option {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: var(--radius);
+  padding: 18px 24px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 15px;
+  color: rgba(248,244,238,0.8);
+  text-align: left;
+}
+.quiz-option:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  color: var(--gold-light);
+  transform: translateX(6px);
+}
+.quiz-option.correct { background: rgba(34,197,94,0.15); border-color: #22c55e; color: #86efac; }
+.quiz-option.wrong { background: rgba(239,68,68,0.15); border-color: #ef4444; color: #fca5a5; }
+.quiz-option-letter {
+  width: 32px; height: 32px;
+  background: rgba(201,168,76,0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.quiz-feedback {
+  margin-top: 20px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct { background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+.quiz-feedback.wrong { background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+.btn-quiz-next {
+  margin-top: 24px;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'DM Sans', sans-serif;
+  display: none;
+}
+.btn-quiz-next.show { display: inline-block; }
+.btn-quiz-next:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(201,168,76,0.4); }
+.quiz-result {
+  text-align: center;
+  padding: 60px 40px;
+  display: none;
+}
+.quiz-result.show { display: block; }
+.quiz-score {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  color: var(--gold);
+  font-weight: 700;
+  line-height: 1;
+}
+.quiz-score-text {
+  font-size: 22px;
+  color: var(--text-light);
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+.quiz-score-sub { font-size: 15px; color: rgba(248,244,238,0.5); margin-bottom: 36px; }
+.btn-restart {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-restart:hover { background: var(--gold); color: var(--dark); }
+
+/* ======================== MESSAGE COLLECTIF ======================== */
+.collective-message {
+  background: var(--dark);
+  border-radius: var(--radius-lg);
+  padding: 100px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(255, 206, 72);
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.864) 0%, rgba(0, 0, 0, 0.881) 100%), url('./assets/img/message-col.png');
+    background-size: cover;
+    background-position: center;
+}
+.collective-message::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.collective-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 4vw, 42px);
+  color: var(--text-light);
+  line-height: 1.5;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+.collective-quote .gold { color: var(--gold); }
+.collective-signature {
+  font-size: 15px;
+  color: rgba(248,244,238,0.5);
+  letter-spacing: 1px;
+}
+.collective-signature strong { color: var(--gold); font-weight: 600; }
+.confetti-btn {
+  margin-top: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'DM Sans', sans-serif;
+}
+.confetti-btn:hover { background: var(--gold); color: var(--dark); transform: scale(1.04); }
+
+/* ======================== FOOTER ======================== */
+footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 60px 40px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.footer-text { font-size: 14px; color: rgba(248,244,238,0.4); line-height: 1.8; }
+.footer-text strong { color: rgba(248,244,238,0.7); }
+.footer-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 24px auto;
+}
+
+/* ======================== ANIMATIONS ======================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero-content > * {
+  animation: fadeInUp 0.8s ease forwards;
+}
+.hero-text > * { opacity: 0; }
+.hero-text > *:nth-child(1) { animation: fadeInUp 0.8s 0.1s ease forwards; }
+.hero-text > *:nth-child(2) { animation: fadeInUp 0.8s 0.3s ease forwards; }
+.hero-text > *:nth-child(3) { animation: fadeInUp 0.8s 0.5s ease forwards; }
+.hero-text > *:nth-child(4) { animation: fadeInUp 0.8s 0.7s ease forwards; }
+.hero-text > *:nth-child(5) { animation: fadeInUp 0.8s 0.9s ease forwards; }
+.hero-image-wrap { opacity: 0; animation: fadeIn 1s 0.5s ease forwards; }
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width: 768px) {
+  .section { padding: 80px 20px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-content { grid-template-columns: 1fr; gap: 50px; }
+  .hero-image-wrap { order: -1; }
+  .hero-image-frame { width: 100%; height: 350px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item:nth-child(1), .gallery-item:nth-child(4) { grid-column: span 2; }
+  .countdown-grid { gap: 12px; }
+  .countdown-block { padding: 24px 20px; min-width: 100px; }
+  .countdown-num { font-size: 42px; }
+  .form-row { grid-template-columns: 1fr; }
+  .wish-form { padding: 30px 24px; }
+  .collective-message { padding: 60px 30px; }
+  .hero-stats { gap: 24px; }
+  .music-player { bottom: 16px; right: 16px; padding: 10px 14px; }
+  .music-label { display: none; }
+  .about-float { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Music Player -->
+<div class="music-player" id="musicPlayer" onclick="toggleMusic()">
+  <div class="music-icon" id="musicIcon">
+    <i class="fas fa-music"></i>
+  </div>
+  <span class="music-label" id="musicLabel">Lire la musique</span>
+  <div class="music-bars">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</div>
+<audio id="bgMusic" loop>
+  <source src="./assets/audio/audio2.mp3" type="audio/mp3">
+</audio>
+
+<!-- ======================== HERO ======================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content container">
+    <div class="hero-text">
+      <div class="hero-tag">✦ DigiWeb Sarl · Célébration</div>
+      <h1 class="hero-title">
+        Joyeux<br>
+        <span class="accent">Anniversaire</span>
+        Miss Lara
+      </h1>
+      <p class="hero-subtitle">
+        En ce jour exceptionnel, DigiWeb Sarl célèbre une femme 
+        <strong>extraordinaire</strong> — Omolara Yédidia, 
+        notre Assistante de Direction dont la grâce illumine chaque journée.
+      </p>
+      <a href="#about" class="btn-primary">
+        <span>Découvrir la surprise</span>
+        <i class="fas fa-arrow-down"></i>
+      </a>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num" id="counter1">0</div>
+          <div class="stat-label">Ans de bonheur</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="counter2">0</div>
+          <div class="stat-label">Collègues admiratifs</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="counter3">0</div>
+          <div class="stat-label">Sourires offerts</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-image-frame">
+        <img src="./assets/img/hero_img.png" alt="Omolara Yédidia" id="heroImg">
+        <!-- Remplacez src par votre photo -->
+      </div>
+      <div class="hero-badge">
+        <small>Assistante de Direction</small>
+        DigiWeb Sarl ✦
+      </div>
+      <div class="hero-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== ABOUT ======================== -->
+<section class="section section-light" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap" data-aos="fade-right" data-aos-duration="800">
+        <div class="about-image">
+          <img src="./assets/img/img1.png" alt="À propos d'Omolara">
+          <!-- Remplacez src par votre photo -->
+        </div>
+        <div class="about-float">
+          <div class="float-icon"><i class="fas fa-star"></i></div>
+          <div class="float-text">Pilier de l'équipe</div>
+          <div class="float-sub">DigiWeb Sarl</div>
+        </div>
+      </div>
+      <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+        <div class="section-tag">✦ À propos d'elle</div>
+        <h2 class="section-title dark">Une femme d'exception au cœur de DigiWeb</h2>
+        <p class="section-subtitle" style="margin-bottom:36px;">
+          Omolara Yédidia est bien plus qu'une Assistante de Direction — elle est 
+          l'âme de notre organisation, la personne sur qui nous comptons toujours.
+        </p>
+        <div class="about-qualities">
+          <!-- <div class="quality-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="quality-icon"><i class="fas fa-crown"></i></div>
+            <div class="quality-text">
+              <h4>Leadership Naturel</h4>
+              <p>Elle inspire par sa présence, guide sans imposer et élève ceux qui l'entourent.</p>
+            </div>
+          </div> -->
+          <div class="quality-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="quality-icon"><i class="fas fa-heart"></i></div>
+            <div class="quality-text">
+              <h4>Générosité Rayonnante</h4>
+              <p>Toujours disponible, toujours bienveillante — son sourire est notre énergie quotidienne.</p>
+            </div>
+          </div>
+          <div class="quality-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="quality-icon"><i class="fas fa-bolt"></i></div>
+            <div class="quality-text">
+              <h4>Excellence Professionnelle</h4>
+              <p>Rigoureuse, efficace, brillante — chaque tâche est accomplie avec une précision remarquable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ======================== GALLERY ======================== -->
+<section class="section section-cream" id="gallery">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px;" data-aos="fade-up">
+      <div class="section-tag">✦ Galerie</div>
+      <h2 class="section-title dark">Moments Précieux</h2>
+      <p class="section-subtitle" style="margin:0 auto;">Des instants capturés, des souvenirs qui durent une vie.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="0">
+        <img src="./assets/img/bg.png" alt="Galerie 1">
+        <!-- Remplacez src -->
+        <div class="gallery-overlay"><span>Moments de leadership ✦</span></div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+        <img src="./assets/img/gallery2.png" alt="Galerie 2">
+        <!-- Remplacez src -->
+        <div class="gallery-overlay"><span>Portrait ✦</span></div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="./assets/img/gallery3.png" alt="Galerie 3">
+        <!-- Remplacez src -->
+        <div class="gallery-overlay"><span>Talent ✦</span></div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+        <img src="./assets/img/gallery4.png" alt="Galerie 4">
+        <!-- Remplacez src -->
+        <div class="gallery-overlay"><span>Élégance ✦</span></div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="./assets/img/gallery6.png" alt="Galerie 5">
+        <!-- Remplacez src -->
+        <div class="gallery-overlay"><span>Excellence au quotidien ✦</span></div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="./assets/img/gallery5.png" alt="Galerie 5">
+        <!-- Remplacez src -->
+        <div class="gallery-overlay"><span>Excellence au quotidien ✦</span></div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="./assets/img/gallery7.png" alt="Galerie 5">
+        <!-- Remplacez src -->
+        <div class="gallery-overlay"><span>✦</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================== WISHES ======================== -->
+<section class="section section-light" id="wishes">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px;" data-aos="fade-up">
+      <div class="section-tag">✦ Mur des souhaits</div>
+      <h2 class="section-title dark">Les Mots de l'Équipe</h2>
+      <p class="section-subtitle" style="margin:0 auto;">Chaque message vient du cœur. DigiWeb t'adore, Omolara.</p>
+    </div>
+    <div class="wishes-grid" id="wishesGrid">
+      <!-- Default messages populated by JS -->
+    </div>
+    <div class="wish-form" data-aos="fade-up">
+      <h3>Laisser un message 💌</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Votre prénom</label>
+          <input type="text" id="wishName" placeholder="Ex: Kofi">
+        </div>
+        <div class="form-group">
+          <label>Votre poste</label>
+          <input type="text" id="wishRole" placeholder="Ex: Développeur">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Votre message</label>
+        <textarea id="wishMessage" placeholder="Écrivez votre message sincère pour Omolara..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="addWish()">
+        <i class="fas fa-paper-plane"></i>
+        <span>Envoyer le message</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== QUIZ ======================== -->
+<section style=" background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.707), rgba(0, 0, 0, 0.8)), url(./assets/img/message.png); background-size: cover; background-position: center;" class="section section-darker" id="quiz">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px;" data-aos="fade-up">
+      <div class="section-tag">✦ Quiz Amusant</div>
+      <h2 class="section-title light">Combien la connaissez-vous ?</h2>
+      <p class="section-subtitle light" style="margin:0 auto;">5 questions pour prouver que vous êtes un vrai fan d'Omolara !</p>
+    </div>
+    <div class="quiz-container" data-aos="fade-up" data-aos-delay="100">
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quizProgress" style="width:0%"></div>
+      </div>
+      <div id="quizQuestion">
+        <div class="quiz-counter" id="quizCounter">Question 1 / 5</div>
+        <div class="quiz-question-text" id="quizText"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="btn-quiz-next" id="quizNext" onclick="nextQuestion()">Question suivante →</button>
+      </div>
+      <div class="quiz-result" id="quizResult">
+        <div class="quiz-score" id="quizScoreNum"></div>
+        <div class="quiz-score-text" id="quizScoreText"></div>
+        <div class="quiz-score-sub" id="quizScoreSub"></div>
+        <button class="confetti-btn" id="confettiBtnQuiz" onclick="launchConfetti(); this.style.display='none'">
+          <i class="fas fa-birthday-cake"></i> Célébrer !
+        </button>
+        <br><br>
+        <button class="btn-restart" onclick="restartQuiz()"><i class="fas fa-redo"></i> Recommencer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== MESSAGE COLLECTIF ======================== -->
+<section class="section section-light" id="message">
+  <div class="container">
+    <div data-aos="fade-up">
+      <div class="collective-message">
+        <div class="section-tag">✦ Message Collectif</div>
+        <p class="collective-quote">
+          "Madame Lara, vous êtes bien plus qu'une collègue — vous êtes la 
+          <span class="gold">lumière</span> de DigiWeb Sarl. 
+          Votre élégance, votre intelligence et votre engagement font de chaque journée un privilège. 
+          En ce jour qui vous est dédié, nous tenons à exprimer notre profonde admiration et nos vœux sincères : 
+          <span class="gold">vous méritez tout le succès et le bonheur possibles.</span>"
+        </p>
+        <div class="collective-signature">
+          — Avec respect et considération · <strong>L'Équipe DigiWeb Sarl</strong>
+        </div>
+        <button class="confetti-btn" onclick="launchConfetti()">
+          <i class="fas fa-stars"></i> Lancer les confettis !
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== COUNTDOWN ======================== -->
+<section style=" background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.395), rgba(0, 0, 0, 0.499)), url(./assets/img/cm.png); background-size: cover; background-position: center;" class="section section-dark">
+  <div class="container">
+    <div data-aos="fade-up">
+      <div class="countdown-wrap">
+        <div class="section-tag">✦ Prochain anniversaire</div>
+        <h2 class="section-title light">A l'année prochaine</h2>
+        <p class="section-subtitle light" style="margin: 0 auto;">
+          Chaque seconde qui passe nous rapproche d'une nouvelle célébration pour cette personne exceptionnelle.
+        </p>
+        <div class="countdown-grid">
+          <div class="countdown-block">
+            <span class="countdown-num" id="days">000</span>
+            <span class="countdown-label">Jours</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-block">
+            <span class="countdown-num" id="hours">00</span>
+            <span class="countdown-label">Heures</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-block">
+            <span class="countdown-num" id="minutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-block">
+            <span class="countdown-num" id="seconds">00</span>
+            <span class="countdown-label">Secondes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FOOTER ======================== -->
+<!-- <footer>
+  <div class="footer-logo">DigiWeb Sarl ✦</div>
+  <div class="footer-divider"></div>
+  <div class="footer-text">
+    Avec admiration et respect sincère<br>
+    <strong>L'équipe DigiWeb Sarl</strong> · Cotonou<br>
+    <span style="font-size:12px;opacity:0.4;margin-top:8px;display:block;">
+      Fait avec ❤️ pour Omolara Yédidia · Joyeux Anniversaire 🎉
+    </span>
+  </div>
+</footer> -->
+
+<script>
+// ======================== CURSOR ========================
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx - 6 + 'px';
+  cursor.style.top = my - 6 + 'px';
+});
+function animateCursor() {
+  rx += (mx - rx - 18) * 0.12;
+  ry += (my - ry - 18) * 0.12;
+  cursorRing.style.left = rx + 'px';
+  cursorRing.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('a,button,.quiz-option,.gallery-item').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; cursorRing.style.transform = 'scale(1.5)'; });
+  el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursorRing.style.transform = 'scale(1)'; });
+});
+
+// ======================== AOS ========================
+AOS.init({ once: true, offset: 80, easing: 'ease-out-cubic' });
+
+// ======================== CONFETTI ========================
+function launchConfetti() {
+  const colors = ['#c9a84c','#e8c96d','#f5dfa0','#fff','#f59e0b'];
+  function fire(particleRatio, opts) {
+    confetti({ ...opts, origin: { y: 0.6 }, colors, particleCount: Math.floor(200 * particleRatio) });
+  }
+  fire(0.25, { spread: 26, startVelocity: 55 });
+  fire(0.2, { spread: 60 });
+  fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+  fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+  fire(0.1, { spread: 120, startVelocity: 45 });
+}
+
+// Launch on load
+window.addEventListener('load', () => {
+  setTimeout(launchConfetti, 800);
+  animateCounters();
+});
+
+// ======================== MUSIC ========================
+let playing = false;
+const audio = document.getElementById('bgMusic');
+const player = document.getElementById('musicPlayer');
+const label = document.getElementById('musicLabel');
+const musicIcon = document.getElementById('musicIcon');
+// audio.volume = 0.35;
+
+function toggleMusic() {
+  if (playing) {
+    audio.pause();
+    playing = false;
+    player.classList.remove('playing');
+    label.textContent = 'Lire la musique';
+    musicIcon.innerHTML = '<i class="fas fa-music"></i>';
+  } else {
+    audio.play().catch(() => {});
+    playing = true;
+    player.classList.add('playing');
+    label.textContent = 'En cours...';
+    musicIcon.innerHTML = '<i class="fas fa-pause"></i>';
+  }
+}
+
+// ======================== COUNTERS ========================
+function animateCounters() {
+  const targets = [{ el: 'counter1', val: 1000 }, { el: 'counter2', val: 24 }, { el: 'counter3', val: 1000 }];
+  targets.forEach(({ el, val }) => {
+    let cur = 0;
+    const step = val / 60;
+    const timer = setInterval(() => {
+      cur = Math.min(cur + step, val);
+      document.getElementById(el).textContent = Math.floor(cur) + (val === 1000 ? '+' : '');
+      if (cur >= val) clearInterval(timer);
+    }, 25);
+  });
+}
+
+// ======================== COUNTDOWN ========================
+function updateCountdown() {
+  const now = new Date();
+  // Date cible : 18 février 2027
+  const target = new Date(2027, 1, 18, 0, 0, 0); // mois = 1 → février (0 = janvier)
+  
+  const diff = target - now;
+
+  if (diff <= 0) {
+    // Si la date est passée
+    document.getElementById('days').textContent = '000';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    return;
+  }
+
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('days').textContent = String(d).padStart(3, '0');
+  document.getElementById('hours').textContent = String(h).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+
+// ======================== WISHES ========================
+const defaultWishes = [
+  { name: 'Mr Angelo', role: 'Dev Web', message: 'Heureux anniversaire à vous Miss Lara, May your best wishes come true and May this year be like IRA your Favourite Drink', date: 'Aujourd\'hui' },
+  { name: 'Mr Bill', role: 'Admin Réseau', message: 'Joyeux anniversaire mademoiselle ADIKO @Omolara Yédidia , notre Chère AD de DIGIWEB, je vous souhaite un bonheur aussi rayonnant que le soleil😇 , Beaucoup de 18/02 dans votre vie', date: 'Aujourd\'hui' },
+  { name: 'Miss Rouka', role: 'Dev Web', message: 'Joyeux anniversaire Mlle @Omolara Yédidia 🎂🎉; Je vous souhaite que du bonheur🎊', date: 'Aujourd\'hui' },
+  { name: 'Mr Renaud', role: 'Dev Web', message: 'Joyeux anniversaire🎂🥳🎊 chère Madame AD alias Madame ADIKO d\'aujourd\'hui; Bien de choses à vous et beaucoup de succès dans vos projets🙏🏽.', date: 'Aujourd\'hui' },
+  { name: 'Mr Hercule', role: 'Dev Web', message: 'Joyeux anniversaire chère Omolara, que cette journée soit pleine de bonheur et de réussite !', date: 'Aujourd\'hui' },
+  { name: 'Mr Mouhid', role: 'Dev Web', message: 'Happy Born Day ! Have fun !', date: 'Aujourd\'hui' },
+  { name: 'Mr Anthony', role: 'Comptable', message: 'Heureux anniversaire à vous, Madame Lara. Que cette journée soit une bénédiction pour vous !', date: 'Aujourd\'hui' },
+  { name: 'Miss Paloma', role: 'Dev Web', message: 'Joyeux anniversaire à vous Miss @Omolara Yédidia 🥳🎉 Que tout vos meilleurs vœux se réalisent 🥰', date: 'Aujourd\'hui' },
+  { name: 'Miss Serena', role: 'Dev Web', message: 'Ton énergie positive est contagieuse ! Merci de rendre chaque journée au bureau si agréable. Joyeux anniversaire !', date: 'Aujourd\'hui' },
+  { name: 'Mr Etienne', role: 'Dev Web', message: 'Joyeux anniversaire à vous, Miss Lara. Que cette année soit remplie de succès et de bonheur !', date: 'Aujourd\'hui' },
+  { name: 'Miss Laëla', role: 'CM', message: 'Je n\'ai jamais vu quelqu\'un coordonner autant de choses avec autant de sang-froid. Tu es exceptionnelle, Omolara !', date: 'Aujourd\'hui' },
+  { name: 'Mr Magloire', role: 'Dev Web', message: 'Joyeux anniversaire à toi, Miss Lara. Que cette année soit remplie de succès et de bonheur !', date: 'Aujourd\'hui' },
+  { name: 'Mme TOSSAVI', role: 'Gérante', message: 'Joyeux anniversaire à toi, Miss Lara. Que cette nouvelle te soit souriante', date: 'Aujourd\'hui' },
+  { name: 'Mr TOSSAVI', role: 'Promoteur', message: 'Que cette bougie t\'apporte le meilleur que tu souhaites, la santé, la sagesse et l\'accomplissement', date: 'Aujourd\'hui' },
+];
+
+function renderWishes(wishes) {
+  const grid = document.getElementById('wishesGrid');
+  grid.innerHTML = '';
+  wishes.forEach((w, i) => {
+    const initials = w.name.slice(0, 2).toUpperCase();
+    const card = document.createElement('div');
+    card.className = 'wish-card';
+    card.style.animationDelay = (i * 0.05) + 's';
+    card.innerHTML = `
+      <div class="wish-author">
+        <div class="wish-avatar">${initials}</div>
+        <div>
+          <div class="wish-name">${w.name}</div>
+          <div class="wish-role">${w.role}</div>
+        </div>
+      </div>
+      <div class="wish-message">${w.message}</div>
+      <div class="wish-date"><i class="fas fa-calendar-day" style="color:var(--gold);margin-right:6px;font-size:11px;"></i>${w.date}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+let allWishes = [...defaultWishes];
+renderWishes(allWishes);
+
+function addWish() {
+  const name = document.getElementById('wishName').value.trim();
+  const role = document.getElementById('wishRole').value.trim();
+  const msg = document.getElementById('wishMessage').value.trim();
+  if (!name || !msg) {
+    alert('Veuillez renseigner votre prénom et votre message !');
+    return;
+  }
+  const now = new Date();
+  const date = now.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  allWishes.unshift({ name, role: role || 'Collègue', message: msg, date });
+  renderWishes(allWishes);
+  document.getElementById('wishName').value = '';
+  document.getElementById('wishRole').value = '';
+  document.getElementById('wishMessage').value = '';
+  launchConfetti();
+  document.getElementById('wishesGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ======================== QUIZ ========================
+const quizData = [
+  {
+    q: "Quel est le poste d'Omolara Yédidia chez DigiWeb Sarl ?",
+    opts: ["Directrice des Ventes", "Assistante de Direction", "Responsable Marketing", "Chef de Projet"],
+    correct: 1,
+    explain: "Omolara est bien notre précieuse Assistante de Direction !"
+  },
+  {
+    q: "Quelle qualité définit le mieux Omolara selon ses collègues ?",
+    opts: ["La rigueur et la bienveillance", "La sévérité", "L'indifférence", "La discrétion exclusive"],
+    correct: 0,
+    explain: "Sa rigueur combinée à sa bienveillance la rend unique !"
+  },
+  {
+    q: "Comment Omolara est-elle décrite au sein de DigiWeb Sarl ?",
+    opts: ["Une personne effacée", "Un pilier de l'équipe", "Une employée ordinaire", "Une personne distante"],
+    correct: 1,
+    explain: "Omolara est véritablement le pilier sur lequel repose DigiWeb !"
+  },
+  {
+    q: "Qu'est-ce qu'Omolara apporte principalement à l'équipe ?",
+    opts: ["De la complexité", "De l'énergie positive et du professionnalisme", "Des tensions", "De l'hésitation"],
+    correct: 1,
+    explain: "Son énergie positive et son professionnalisme sont ses marques de fabrique !"
+  },
+  {
+    q: "Si Omolara était un élément naturel, ce serait lequel ?",
+    opts: ["La tempête", "La lumière du soleil", "La pluie froide", "Le vent imprévisible"],
+    correct: 1,
+    explain: "Omolara est comme la lumière du soleil — elle réchauffe tout ce qu'elle touche !"
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion() {
+  const q = quizData[currentQ];
+  document.getElementById('quizCounter').textContent = `Question ${currentQ + 1} / ${quizData.length}`;
+  document.getElementById('quizText').textContent = q.q;
+  document.getElementById('quizProgress').style.width = (currentQ / quizData.length * 100) + '%';
+  const opts = document.getElementById('quizOptions');
+  opts.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.opts.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-option';
+    div.innerHTML = `<div class="quiz-option-letter">${letters[i]}</div><span>${opt}</span>`;
+    div.onclick = () => selectAnswer(i, div);
+    opts.appendChild(div);
+  });
+  document.getElementById('quizFeedback').className = 'quiz-feedback';
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('quizNext').className = 'btn-quiz-next';
+  answered = false;
+}
+
+function selectAnswer(idx, el) {
+  if (answered) return;
+  answered = true;
+  const q = quizData[currentQ];
+  const opts = document.querySelectorAll('.quiz-option');
+  opts.forEach((o, i) => {
+    o.style.pointerEvents = 'none';
+    if (i === q.correct) o.classList.add('correct');
+    else if (i === idx && idx !== q.correct) o.classList.add('wrong');
+  });
+  const fb = document.getElementById('quizFeedback');
+  if (idx === q.correct) {
+    score++;
+    fb.className = 'quiz-feedback correct show';
+    fb.innerHTML = '✓ ' + q.explain;
+  } else {
+    fb.className = 'quiz-feedback wrong show';
+    fb.innerHTML = '✗ Ce n\'est pas tout à fait ça. ' + q.explain;
+  }
+  document.getElementById('quizNext').className = 'btn-quiz-next show';
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= quizData.length) {
+    showResult();
+  } else {
+    loadQuestion();
+  }
+}
+
+function showResult() {
+  document.getElementById('quizProgress').style.width = '100%';
+  document.getElementById('quizQuestion').style.display = 'none';
+  const result = document.getElementById('quizResult');
+  result.className = 'quiz-result show';
+  document.getElementById('quizScoreNum').textContent = score + '/' + quizData.length;
+  if (score === quizData.length) {
+    document.getElementById('quizScoreText').textContent = '🏆 Parfait ! Vous êtes un super fan !';
+    document.getElementById('quizScoreSub').textContent = 'Vous connaissez Omolara comme vos propres poches !';
+    document.getElementById('confettiBtnQuiz').style.display = 'inline-flex';
+    setTimeout(launchConfetti, 300);
+  } else if (score >= 3) {
+    document.getElementById('quizScoreText').textContent = '👏 Bien joué ! Pas mal du tout !';
+    document.getElementById('quizScoreSub').textContent = 'Vous appréciez clairement Omolara. Continuez !';
+    document.getElementById('confettiBtnQuiz').style.display = 'inline-flex';
+  } else {
+    document.getElementById('quizScoreText').textContent = '💡 Il faut mieux connaître Omolara !';
+    document.getElementById('quizScoreSub').textContent = 'Passez plus de temps avec elle — elle le vaut !';
+    document.getElementById('confettiBtnQuiz').style.display = 'none';
+  }
+}
+
+function restartQuiz() {
+  currentQ = 0; score = 0; answered = false;
+  document.getElementById('quizQuestion').style.display = 'block';
+  document.getElementById('quizResult').className = 'quiz-result';
+  loadQuestion();
+}
+
+loadQuestion();
+</script>
+</body>
+</html>
