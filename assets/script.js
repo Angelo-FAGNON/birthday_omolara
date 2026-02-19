@@ -33,15 +33,6 @@ const label = document.getElementById('musicLabel');
 const musicIcon = document.getElementById('musicIcon');
 // audio.volume = 0.35;
 
-// Auto-play on mobile devices
-if (/Mobi|Android/i.test(navigator.userAgent)) {
-  audio.play().catch(() => {});
-  playing = true;
-  player.classList.add('playing');
-  label.textContent = 'En cours...';
-  musicIcon.innerHTML = '<i class="fas fa-pause"></i>';
-}
-
 function toggleMusic() {
   if (playing) {
     audio.pause();
