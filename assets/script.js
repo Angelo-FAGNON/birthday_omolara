@@ -1,25 +1,4 @@
 
-// ======================== CURSOR ========================
-const cursor = document.getElementById('cursor');
-const cursorRing = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx - 6 + 'px';
-  cursor.style.top = my - 6 + 'px';
-});
-function animateCursor() {
-  rx += (mx - rx - 18) * 0.12;
-  ry += (my - ry - 18) * 0.12;
-  cursorRing.style.left = rx + 'px';
-  cursorRing.style.top = ry + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
-document.querySelectorAll('a,button,.quiz-option,.gallery-item').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; cursorRing.style.transform = 'scale(1.5)'; });
-  el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursorRing.style.transform = 'scale(1)'; });
-});
 
 // ======================== AOS ========================
 AOS.init({ once: true, offset: 80, easing: 'ease-out-cubic' });
@@ -30,6 +9,9 @@ function launchConfetti() {
   function fire(particleRatio, opts) {
     confetti({ ...opts, origin: { y: 0.6 }, colors, particleCount: Math.floor(200 * particleRatio) });
   }
+
+  if (window.innerWidth < 768) return;
+
   fire(0.25, { spread: 26, startVelocity: 55 });
   fire(0.2, { spread: 60 });
   fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
@@ -50,6 +32,15 @@ const player = document.getElementById('musicPlayer');
 const label = document.getElementById('musicLabel');
 const musicIcon = document.getElementById('musicIcon');
 // audio.volume = 0.35;
+
+// Auto-play on mobile devices
+if (/Mobi|Android/i.test(navigator.userAgent)) {
+  audio.play().catch(() => {});
+  playing = true;
+  player.classList.add('playing');
+  label.textContent = 'En cours...';
+  musicIcon.innerHTML = '<i class="fas fa-pause"></i>';
+}
 
 function toggleMusic() {
   if (playing) {
